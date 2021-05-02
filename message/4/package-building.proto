@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package building;
+
+import "da-n/proto/message/4/package-street.proto";
+
+message Building {
+  string building_name = 1;
+  int32 building_number = 2;
+  street.Street street = 3;
+}

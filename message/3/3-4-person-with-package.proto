@@ -1,0 +1,45 @@
+// The syntax for this file is proto3
+syntax = "proto3";
+
+import "proto/date-with-package.proto";
+
+package person;
+
+/* The person is
+ * an object of something
+ */
+message Person {
+  int32 age = 1;
+  string first_name = 2;
+  string last_name = 3;
+  bytes small_picture = 4;
+  bool is_profile_verified = 5;
+  float height = 6;
+
+  repeated string phone_numbers = 7;
+
+  // We currently consider only 3 eye colours.
+  enum EyeColour {
+    UNKNOWN_EYE_COLOUR = 0;
+    EYE_GREEN = 1;
+    EYE_BROWN = 2;
+    EYE_BLUE = 3;
+  }
+
+  EyeColour eye_colour = 8;
+
+  // Person's birthday.
+  my.date.Date birthday = 9;
+
+  // We define the type address within person.
+  message Address {
+    string address_line_1 = 1;
+    string address_line_2 = 2;
+    string zip_code = 3;
+    string city = 4;
+    string country = 5;
+  }
+
+  // Multiple addresses.
+  repeated Address addresses = 10;
+}
